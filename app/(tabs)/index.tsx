@@ -1,10 +1,12 @@
 import MapComponent from "@/components/index/map-component";
-import { Text, View, StyleSheet } from "react-native";
+import SigningSection from "@/components/index/signing-section";
+import { View, StyleSheet } from "react-native";
 
 export default function Index() {
   return (
     <View style={styles.container}>
       <MapComponent />
+      <SigningSection />
     </View>
   );
 }

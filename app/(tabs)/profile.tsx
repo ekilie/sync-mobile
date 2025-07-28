@@ -1,15 +1,22 @@
-import { Text, View } from "react-native";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import UserInfo from '../../components/profile/user-info';
+import ProfileActions from '../../components/profile/profile-actions';
 
-export default function Profile() {
+const Profile = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View style={styles.container}>
+      <UserInfo />
+      <ProfileActions />
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
+
+export default Profile;

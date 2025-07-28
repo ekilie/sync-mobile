@@ -1,15 +1,32 @@
-import { Text, View } from "react-native";
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import SettingsOption from '../../components/settings/settings-options';
 
-export default function Settings() {
+const Settings = () => {
+  const [notifications, setNotifications] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View style={styles.container}>
+      <SettingsOption
+        title="Enable Notifications"
+        value={notifications}
+        onValueChange={setNotifications}
+      />
+      <SettingsOption
+        title="Dark Mode"
+        value={darkMode}
+        onValueChange={setDarkMode}
+      />
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 20,
+  },
+});
+
+export default Settings;
