@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const Button = ({
   title,
@@ -20,12 +20,12 @@ const Button = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#000000ff",
     paddingVertical: 16,
     paddingHorizontal: 24,
     width: "100%",
     borderRadius: 12,
-    shadowColor: "#007AFF",
+    shadowColor: "#000000ff",
     shadowOffset: {
       width: 0,
       height: 4,

@@ -1,18 +1,18 @@
+import useAuth from "@/utils/use-auth";
+import { EvilIcons, Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Modal,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-  ScrollView,
+    KeyboardAvoidingView,
+    Modal,
+    Platform,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
-import { EvilIcons, Ionicons } from "@expo/vector-icons";
-import useAuth from "@/utils/use-auth";
 
 interface AuthModalProps {
   visible: boolean;
@@ -99,7 +99,7 @@ const AuthModal = ({ visible, onClose }: AuthModalProps) => {
                     <Ionicons
                       name="person-circle-outline"
                       size={80}
-                      color="#007AFF"
+                      color="#000000ff"
                     />
                   </View>
 
@@ -131,7 +131,7 @@ const AuthModal = ({ visible, onClose }: AuthModalProps) => {
                     <Ionicons
                       name="shield-checkmark-outline"
                       size={80}
-                      color="#007AFF"
+                      color="#000000ff"
                     />
                   </View>
 
@@ -180,7 +180,7 @@ const AuthModal = ({ visible, onClose }: AuthModalProps) => {
                   onPress={handleBack}
                   disabled={isLoading}
                 >
-                  <Ionicons name="chevron-back" size={20} color="#007AFF" />
+                  <Ionicons name="chevron-back" size={20} color="#000000ff" />
                   <Text style={styles.secondaryButtonText}>Back</Text>
                 </TouchableOpacity>
               )}
@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   resendLink: {
-    color: "#007AFF",
+    color: "#000000ff",
     fontWeight: "600",
   },
   bottomContainer: {
@@ -377,8 +377,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   primaryButton: {
-    backgroundColor: "#007AFF",
-    shadowColor: "#007AFF",
+    backgroundColor: "#000000ff",
+    shadowColor: "#000000ff",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
   secondaryButton: {
     backgroundColor: "#f8f9fa",
     borderWidth: 2,
-    borderColor: "#007AFF",
+    borderColor: "#000000ff",
   },
   fullWidthButton: {
     flex: 2,
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   secondaryButtonText: {
-    color: "#007AFF",
+    color: "#000000ff",
     fontSize: 17,
     fontWeight: "600",
   },

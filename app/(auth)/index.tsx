@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Text, SafeAreaView, StyleSheet, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import Button from "@/components/auth/button";
 import AuthModal from "@/components/auth/modal";
+import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -11,7 +11,7 @@ export default function Index() {
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <View style={styles.header}>
-          <Ionicons name="sync" size={48} color="#007AFF" />
+          <Ionicons name="sync" size={48} color="#000000ff" />
           <Text style={styles.title}>Login to Sync</Text>
           <Text style={styles.subtitle}>
             sign your attendance with ease with sync app
