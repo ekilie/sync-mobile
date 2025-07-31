@@ -1,39 +1,88 @@
-import { View, Text, StyleSheet } from "react-native";
+// components/index/signing-section.tsx
+import React, { useRef, useEffect } from "react";
+import { Text, StyleSheet, Animated, Easing } from "react-native";
 import useAuth from "@/utils/use-auth";
 import Button from "@/components/auth/button";
+import { COLORS } from "@/utils/styles";
+import { User } from "@/types/interface";
 
-const SigningSection = () => {
+
+const SigningSection: React.FC = () => {
+  const scaleAnim = useRef(new Animated.Value(0.9)).current;
+  const opacityAnim = useRef(new Animated.Value(0)).current;
+  
+  // Properly type the useAuth hook based on your implementation
+  const { user } = useAuth() as { user?: User };
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        friction: 5,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacityAnim, {
+        toValue: 1,
+        duration: 500,
+        easing: Easing.out(Easing.cubic),
+        useNativeDriver: true,
+      })
+    ]).start();
+  }, []);
+
   const handleVerify = () => {
-    console.log("location verified");
+    console.log("Verifying location and signing attendance");
+    // Add actual verification logic here
   };
 
-  const { user } = useAuth();
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome, {user?.name}</Text>
-      <Button title="Verify & Sign" onPress={handleVerify} />
-    </View>
+    <Animated.View style={[
+      styles.container, 
+      { 
+        opacity: opacityAnim,
+        transform: [{ scale: scaleAnim }] 
+      }
+    ]}>
+      <Text style={styles.welcomeText}>
+        Welcome, <Text style={styles.userName}>{user?.name || "User"}</Text>
+      </Text>
+      
+      <Button 
+        title="Verify & Sign" 
+        onPress={handleVerify} 
+        style={styles.button}
+      />
+    </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.5,
-    width: "100%",
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
     padding: 24,
+    backgroundColor: COLORS.background,
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 16,
+    elevation: 16,
+    alignItems: "center",
     gap: 24,
   },
   welcomeText: {
     fontSize: 24,
-    fontWeight: "600",
-    color: "#1a1a1a",
+    fontWeight: "500",
+    color: COLORS.secondaryText,
     textAlign: "center",
+  },
+  userName: {
+    fontWeight: "700",
+    color: COLORS.primaryText,
+  },
+  button: {
+    width: "100%",
+    maxWidth: 300,
   },
 });
 
