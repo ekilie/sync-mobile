@@ -13,7 +13,7 @@ export default function TabLayout() {
           backgroundColor: COLORS.background,
           height: 70,
           borderTopWidth: 0.5,
-          borderTopColor: "#E5E7EB", // subtle divider
+          borderTopColor: COLORS.inactive,
           paddingBottom: 10,
           paddingTop: 10,
         },
