@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View, Platform } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, Platform, StatusBar } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Button from "@/components/auth/button";
 import AuthModal from "@/components/auth/modal";
+import { COLORS } from "@/utils/styles";
 
-const COLORS = {
-  background: "#F8F9FA",
-  primaryText: "#1A1A1A",
-  secondaryText: "#6B7280",
-  icon: "#000000",
-};
 
 export default function Index() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -33,6 +28,7 @@ export default function Index() {
 function Header() {
   return (
     <View style={styles.header}>
+      <StatusBar barStyle="dark-content" />
       <Ionicons name="sync" size={48} color={COLORS.icon} />
       <Text style={styles.title}>Login to Sync</Text>
       <Text style={styles.subtitle}>
