@@ -1,39 +1,51 @@
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet, Text, View, Platform } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import Button from "@/components/auth/button";
 import AuthModal from "@/components/auth/modal";
-import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+
+const COLORS = {
+  background: "#F8F9FA",
+  primaryText: "#1A1A1A",
+  secondaryText: "#6B7280",
+  icon: "#000000",
+};
 
 export default function Index() {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleOpenModal = () => setIsModalVisible(true);
+  const handleCloseModal = () => setIsModalVisible(false);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <View style={styles.header}>
-          <Ionicons name="sync" size={48} color="#000000ff" />
-          <Text style={styles.title}>Login to Sync</Text>
-          <Text style={styles.subtitle}>
-            sign your attendance with ease with sync app
-          </Text>
-        </View>
-
+        <Header />
         <View style={styles.buttonContainer}>
-          <Button title="Login" onPress={() => setModalVisible(true)} />
-          <AuthModal
-            visible={modalVisible}
-            onClose={() => setModalVisible(false)}
-          />
+          <Button title="Login" onPress={handleOpenModal} />
+          <AuthModal visible={isModalVisible} onClose={handleCloseModal} />
         </View>
       </View>
     </SafeAreaView>
   );
 }
 
+function Header() {
+  return (
+    <View style={styles.header}>
+      <Ionicons name="sync" size={48} color={COLORS.icon} />
+      <Text style={styles.title}>Login to Sync</Text>
+      <Text style={styles.subtitle}>
+        Sign your attendance with ease with Sync App
+      </Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8f9fa",
+    backgroundColor: COLORS.background,
   },
   content: {
     flex: 1,
@@ -45,15 +57,15 @@ const styles = StyleSheet.create({
     marginBottom: 48,
   },
   title: {
-    fontSize: 28,
+    fontSize: Platform.select({ ios: 28, android: 26 }),
     fontWeight: "600",
-    color: "#1a1a1a",
+    color: COLORS.primaryText,
     marginTop: 16,
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: "#6b7280",
+    color: COLORS.secondaryText,
     textAlign: "center",
     lineHeight: 22,
   },
