@@ -8,9 +8,11 @@ import {
   SafeAreaView 
 } from 'react-native';
 import { COLORS } from '@/utils/styles';
-import SettingsHeader from '../../components/settings/settings-header';
-import SettingsSection from '../../components/settings/settings-section';
-import UserSettingsCard from '../../components/settings/user-settings-card';
+import { 
+  SettingsHeader, 
+  SettingsSection, 
+  UserSettingsCard 
+} from '../../components/settings';
 
 const Settings = () => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
@@ -56,7 +58,7 @@ const Settings = () => {
               { icon: 'moon', title: 'Dark Mode', type: 'toggle', value: false },
               { icon: 'bell', title: 'Push Notifications', type: 'toggle', value: true },
               { icon: 'volume-2', title: 'Sound Effects', type: 'toggle', value: true },
-              { icon: 'vibrate', title: 'Haptic Feedback', type: 'toggle', value: false },
+              { icon: 'smartphone', title: 'Haptic Feedback', type: 'toggle', value: false },
             ]}
           />
           
