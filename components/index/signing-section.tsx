@@ -30,7 +30,7 @@ const SigningSection: React.FC = () => {
 
   const handleVerify = () => {
     console.log("Verifying location and signing attendance");
-    // Add actual verification logic here
+    //TODO: Add actual verification logic here
   };
 
   return (
