@@ -1,4 +1,3 @@
-// components/index/signing-section.tsx
 import React, { useRef, useEffect } from "react";
 import { Text, StyleSheet, Animated, Easing } from "react-native";
 import useAuth from "@/utils/use-auth";
@@ -11,7 +10,6 @@ const SigningSection: React.FC = () => {
   const scaleAnim = useRef(new Animated.Value(0.9)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
   
-  // Properly type the useAuth hook based on your implementation
   const { user } = useAuth() as { user?: User };
 
   useEffect(() => {
