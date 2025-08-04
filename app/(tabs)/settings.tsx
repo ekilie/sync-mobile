@@ -11,7 +11,8 @@ import { COLORS } from '@/utils/styles';
 import { 
   SettingsHeader, 
   SettingsSection, 
-  UserSettingsCard 
+  UserSettingsCard,
+  QuickActionsCard 
 } from '../../components/settings';
 
 const Settings = () => {
@@ -51,6 +52,8 @@ const Settings = () => {
           <SettingsHeader />
           
           <UserSettingsCard />
+          
+          <QuickActionsCard />
           
           <SettingsSection
             title="Preferences"
