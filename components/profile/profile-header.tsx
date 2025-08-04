@@ -46,7 +46,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#F1F3F5',
+    backgroundColor: '#23232485',
     height: 180,
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
