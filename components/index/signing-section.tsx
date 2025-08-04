@@ -58,8 +58,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 24,
     backgroundColor: COLORS.background,
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
+    borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: -4 },
     shadowOpacity: 0.25,

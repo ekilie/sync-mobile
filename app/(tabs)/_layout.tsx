@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import { Foundation, Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { COLORS } from "@/utils/styles";
 
 export default function TabLayout() {
@@ -29,7 +29,7 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <Foundation
+            <Feather
               name="home"
               size={focused ? 28 : 24}
               color={color}
@@ -42,8 +42,8 @@ export default function TabLayout() {
         options={{
           title: "Profile",
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons
-              name="person"
+            <Feather
+              name="user"
               size={focused ? 28 : 24}
               color={color}
             />
@@ -55,7 +55,7 @@ export default function TabLayout() {
         options={{
           title: "Settings",
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons
+            <Feather
               name="settings"
               size={focused ? 28 : 24}
               color={color}
