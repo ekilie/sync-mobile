@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 70,
   },
   avatarContainer: {
     position: 'relative',
