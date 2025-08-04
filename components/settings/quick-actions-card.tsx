@@ -1,13 +1,13 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity,
-  Animated 
-} from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import { COLORS } from '@/utils/styles';
+import { Feather } from '@expo/vector-icons';
+import React from 'react';
+import {
+    Animated,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native';
 
 interface QuickAction {
   icon: React.ComponentProps<typeof Feather>['name'];

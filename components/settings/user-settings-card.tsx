@@ -1,13 +1,13 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  Image, 
-  TouchableOpacity 
-} from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import { COLORS } from '@/utils/styles';
+import { Feather } from '@expo/vector-icons';
+import React from 'react';
+import {
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native';
 
 const UserSettingsCard: React.FC = () => {
   return (

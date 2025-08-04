@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity,
-  Switch,
-  Animated 
-} from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import { COLORS } from '@/utils/styles';
+import { Feather } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import {
+    Animated,
+    StyleSheet,
+    Switch,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native';
 
 interface SettingsItem {
   icon: React.ComponentProps<typeof Feather>['name'];

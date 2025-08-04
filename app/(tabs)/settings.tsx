@@ -1,18 +1,18 @@
-import React from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  Animated, 
-  ScrollView,
-  SafeAreaView 
-} from 'react-native';
 import { COLORS } from '@/utils/styles';
-import { 
-  SettingsHeader, 
-  SettingsSection, 
-  UserSettingsCard,
-  QuickActionsCard 
+import React from 'react';
+import {
+  Animated,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import {
+  QuickActionsCard,
+  SettingsHeader,
+  SettingsSection,
+  UserSettingsCard
 } from '../../components/settings';
 
 const Settings = () => {
