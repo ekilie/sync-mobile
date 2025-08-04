@@ -17,6 +17,7 @@ export default function TabLayout() {
           paddingBottom: 20,
           paddingTop: 10,
         },
+        animation: "shift",
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "600",
