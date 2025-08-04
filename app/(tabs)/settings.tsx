@@ -1,23 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import SettingsOption from '../../components/settings/settings-options';
+import { PreferencesSection } from '@/components/profile';
 
 const Settings = () => {
-  const [notifications, setNotifications] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
-
   return (
     <View style={styles.container}>
-      <SettingsOption
-        title="Enable Notifications"
-        value={notifications}
-        onValueChange={setNotifications}
-      />
-      <SettingsOption
-        title="Dark Mode"
-        value={darkMode}
-        onValueChange={setDarkMode}
-      />
+      <PreferencesSection/>
     </View>
   );
 };

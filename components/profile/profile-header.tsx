@@ -1,13 +1,13 @@
-import React from 'react';
-import { 
-  View, 
-  StyleSheet, 
-  Animated, 
-  TouchableOpacity,
-  Image
-} from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import { COLORS } from '@/utils/styles';
+import { Feather } from '@expo/vector-icons';
+import React from 'react';
+import {
+    Animated,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+    View
+} from 'react-native';
 
 interface ProfileHeaderProps {
   isEditing: boolean;

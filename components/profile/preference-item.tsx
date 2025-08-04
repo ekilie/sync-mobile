@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import { COLORS } from '@/utils/styles';
+import { Feather } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface PreferenceItemProps {
   icon: React.ComponentProps<typeof Feather>['name'];

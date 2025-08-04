@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import StatItem from './stat-item';
 
 const StatsSection: React.FC = () => {

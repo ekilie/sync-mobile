@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { 
-  StyleSheet, 
-  ScrollView, 
-  Animated, 
-  Easing
-} from 'react-native';
 import { COLORS } from '@/utils/styles';
-import UserInfo from '../../components/profile/user-info';
-import ProfileActions from '../../components/profile/profile-actions';
-import ProfileHeader from '../../components/profile/profile-header';
-import StatsSection from '../../components/profile/stats-section';
-import PreferencesSection from '../../components/profile/preferences-section';
+import React, { useState } from 'react';
+import {
+  Animated,
+  Easing,
+  ScrollView,
+  StyleSheet
+} from 'react-native';
+import {
+  ProfileActions,
+  ProfileHeader,
+  StatsSection,
+  UserInfo,
+} from '../../components/profile';
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -59,8 +60,6 @@ const Profile = () => {
           <StatsSection />
           
           <ProfileActions isEditing={isEditing} />
-          
-          <PreferencesSection />
         </Animated.View>
       </ScrollView>
     </Animated.View>

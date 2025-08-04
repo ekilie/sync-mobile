@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { COLORS } from '@/utils/styles';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 interface StatItemProps {
   value: string;
