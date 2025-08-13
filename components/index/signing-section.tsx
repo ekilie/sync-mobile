@@ -4,12 +4,12 @@ import useAuth from "@/utils/use-auth";
 import Button from "@/components/auth/button";
 import { COLORS } from "@/utils/styles";
 import { User } from "@/types/interface";
-
+import { QuickActionsCard } from "@/components/settings";
 
 const SigningSection: React.FC = () => {
   const scaleAnim = useRef(new Animated.Value(0.9)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
-  
+
   const { user } = useAuth() as { user?: User };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const SigningSection: React.FC = () => {
         duration: 500,
         easing: Easing.out(Easing.cubic),
         useNativeDriver: true,
-      })
+      }),
     ]).start();
   }, []);
 
@@ -34,22 +34,26 @@ const SigningSection: React.FC = () => {
   };
 
   return (
-    <Animated.View style={[
-      styles.container, 
-      { 
-        opacity: opacityAnim,
-        transform: [{ scale: scaleAnim }] 
-      }
-    ]}>
+    <Animated.View
+      style={[
+        styles.container,
+        {
+          opacity: opacityAnim,
+          transform: [{ scale: scaleAnim }],
+        },
+      ]}
+    >
       <Text style={styles.welcomeText}>
         Welcome, <Text style={styles.userName}>{user?.name || "User"}</Text>
       </Text>
-      
-      <Button 
-        title="Verify & Sign" 
-        onPress={handleVerify} 
-        style={styles.button}
+
+      <Button
+        title="Verify & Sign"
+        onPress={handleVerify}
+        // style={styles.button}
       />
+
+      <QuickActionsCard />
     </Animated.View>
   );
 };

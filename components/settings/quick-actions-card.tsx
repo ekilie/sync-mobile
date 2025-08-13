@@ -117,7 +117,7 @@ const QuickActionsCard: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 24,
-    marginBottom: 32,
+    marginBottom: 10,
   },
   title: {
     fontSize: 18,

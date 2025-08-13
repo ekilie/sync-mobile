@@ -4,5 +4,7 @@ export const COLORS = {
   secondaryText: "#6B7280",
   icon: "#000000",
   active: "#1A1A1A", 
-  inactive: "#6B7280",
+  accent: '#3B82F6',
+  inactive: '#9CA3AF',
+  inactiveLight: '#E5E5EA',
 };

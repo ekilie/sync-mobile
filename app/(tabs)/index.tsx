@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, StyleSheet, Animated, Easing } from "react-native";
 import SigningSection from "@/components/index/signing-section";
-import { COLORS } from "@/utils/styles";
 import MapComponent from "@/components/index/map-component";
 
 export default function HomeScreen() {
@@ -31,6 +30,7 @@ export default function HomeScreen() {
           padding: 10,
           transform: [{ translateY: slideAnim }] }}>
           <SigningSection />
+
         </Animated.View>
       )}
     </View>

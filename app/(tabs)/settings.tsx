@@ -51,9 +51,7 @@ const Settings = () => {
         >
           <SettingsHeader />
           
-          <UserSettingsCard />
-          
-          <QuickActionsCard />
+          {/* <UserSettingsCard /> */}
           
           <SettingsSection
             title="Preferences"
@@ -64,6 +62,7 @@ const Settings = () => {
               { icon: 'smartphone', title: 'Haptic Feedback', type: 'toggle', value: false },
             ]}
           />
+          
           
           <SettingsSection
             title="Privacy & Security"
