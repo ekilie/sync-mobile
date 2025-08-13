@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { Text, StyleSheet, Animated, Easing } from "react-native";
-import useAuth from "@/utils/use-auth";
+import useAuth from "@/lib/utils/use-auth";
 import Button from "@/components/auth/button";
-import { COLORS } from "@/utils/styles";
+import { COLORS } from "@/lib/utils/styles";
 import { User } from "@/types/interface";
 
 

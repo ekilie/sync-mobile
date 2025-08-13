@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { StyleSheet, Animated, Easing } from "react-native";
-import { COLORS } from "@/utils/styles";
+import { COLORS } from "@/lib/utils/styles";
 
 interface MapComponentProps {
   onMapReady?: () => void;
