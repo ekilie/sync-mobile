@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export interface CurrentUser {
   id:string,
   name:string,
@@ -21,23 +22,23 @@ export interface Office{
 const storage = {
   getItem: async (key: string): Promise<string | null> => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem(key);
+      return AsyncStorage.getItem(key);
     }
     return null;
   },
   setItem: async (key: string, value: string): Promise<void> => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem(key, value);
+      AsyncStorage.setItem(key, value);
     }
   },
   removeItem: async (key: string): Promise<void> => {
     if (typeof window !== 'undefined') {
-      localStorage.removeItem(key);
+      AsyncStorage.removeItem(key);
     }
   },
   clear: async (): Promise<void> => {
     if (typeof window !== 'undefined') {
-      localStorage.clear();
+      AsyncStorage.clear();
     }
   }
 };
@@ -67,8 +68,8 @@ export const currentUser = async ():Promise<CurrentUser | null> => {
   return user ? JSON.parse(user) : null;
 };
 
-export const officeData = ()=> {
-  const data = localStorage.getItem('ekili-sync:user');
+export const officeData = async () => {
+  const data = await AsyncStorage.getItem('ekili-sync:user');
   if (data) {
     const user: CurrentUser = JSON.parse(data);
     return user.office;

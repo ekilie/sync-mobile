@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import useAuth from "@/lib/utils/use-auth";
+import useAuth from "@/utils/use-auth";
 
 export default function RootLayout() {
   const { isAuthenticated } = useAuth();

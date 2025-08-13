@@ -1,4 +1,4 @@
-import { COLORS } from '@/lib/utils/styles';
+import { COLORS } from '@/utils/styles';
 import React, { useState } from 'react';
 import {
   Animated,

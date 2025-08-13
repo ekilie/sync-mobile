@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet, Animated } from 'react-native';
-import { COLORS } from '@/lib/utils/styles';
+import { COLORS } from '@/utils/styles';
 
 const UserInfo = ({ isEditing }: { isEditing: boolean }) => {
   return (

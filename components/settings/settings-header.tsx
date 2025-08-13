@@ -1,4 +1,4 @@
-import { COLORS } from '@/lib/utils/styles';
+import { COLORS } from '@/utils/styles';
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import {

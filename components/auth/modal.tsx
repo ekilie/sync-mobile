@@ -1,4 +1,4 @@
-import useAuth from "@/lib/utils/use-auth";
+import useAuth from "@/utils/use-auth";
 import { EvilIcons, Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {

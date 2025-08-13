@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
-import { COLORS } from "@/lib/utils/styles";
+import { COLORS } from "@/utils/styles";
 
 export default function TabLayout() {
   return (

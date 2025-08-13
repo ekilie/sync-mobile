@@ -12,7 +12,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import Button from "@/components/auth/button";
 import AuthModal from "@/components/auth/modal";
-import { COLORS } from "@/lib/utils/styles";
+import { COLORS } from "@/utils/styles";
 
 export default function AuthScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
