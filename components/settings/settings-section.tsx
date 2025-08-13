@@ -126,49 +126,50 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({ title, items }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 24,
-    marginBottom: 32,
+    marginHorizontal: 20,
+    marginBottom: 28,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '700',
     color: COLORS.primaryText,
-    marginBottom: 16,
+    marginBottom: 10,
     marginLeft: 4,
+    opacity: 0.85,
+    letterSpacing: 0.3,
   },
   section: {
     backgroundColor: 'white',
-    borderRadius: 16,
+    borderRadius: 20,
+    overflow: 'hidden',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.06,
+    shadowRadius: 12,
+    elevation: 3,
   },
   itemContainer: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(0,0,0,0.08)',
+    borderBottomColor: 'rgba(0,0,0,0.07)',
   },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 16,
-    paddingHorizontal: 20,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    backgroundColor: 'white',
   },
   iconContainer: {
-    width: 36,
-    height: 36,
-    borderRadius: 10,
-    backgroundColor: 'rgba(26, 26, 26, 0.08)',
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: 'rgba(26, 26, 26, 0.06)',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 16,
+    marginRight: 14,
   },
   destructiveIconContainer: {
-    backgroundColor: 'rgba(255, 59, 48, 0.1)',
+    backgroundColor: 'rgba(255, 59, 48, 0.12)',
   },
   itemContent: {
     flex: 1,
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemTitle: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '500',
     color: COLORS.primaryText,
   },
@@ -185,5 +186,6 @@ const styles = StyleSheet.create({
     color: '#FF3B30',
   },
 });
+
 
 export default SettingsSection;
