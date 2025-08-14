@@ -13,6 +13,8 @@ import { Ionicons } from "@expo/vector-icons";
 import Button from "@/components/auth/button";
 import AuthModal from "@/components/auth/modal";
 import { COLORS } from "@/utils/styles";
+import Toast from 'react-native-toast-message';
+
 
 export default function AuthScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -41,6 +43,7 @@ export default function AuthScreen() {
 
   return (
     <View style={styles.container}>
+      <Toast/>
       <StatusBar 
         barStyle="dark-content" 
         backgroundColor={COLORS.background} 
@@ -72,7 +75,7 @@ export default function AuthScreen() {
           <Button 
             title="Login" 
             onPress={handleOpenModal} 
-            style={styles.button}
+            // style={styles.button}
           />
           <AuthModal 
             visible={isModalVisible} 

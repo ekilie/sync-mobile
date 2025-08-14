@@ -8,12 +8,14 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 interface QuickAction {
   icon: React.ComponentProps<typeof Feather>['name'];
   title: string;
   color: string;
   backgroundColor: string;
+  showToast: () => void;
 }
 
 const QuickActionsCard: React.FC = () => {
@@ -23,24 +25,28 @@ const QuickActionsCard: React.FC = () => {
       title: 'Invite Friends',
       color: '#007AFF',
       backgroundColor: 'rgba(0, 122, 255, 0.1)',
+      showToast: () => Toast.show({ text1: 'Invite Friends pressed' }),
     },
     {
       icon: 'database',
       title: 'Backup Data',
       color: '#34C759',
       backgroundColor: 'rgba(52, 199, 89, 0.1)',
+      showToast: () => Toast.show({ text1: 'Backup Data pressed' }),
     },
     {
       icon: 'share',
       title: 'Share App',
       color: '#FF9500',
       backgroundColor: 'rgba(255, 149, 0, 0.1)',
+      showToast: () => Toast.show({ text1: 'Share App pressed' }),
     },
     {
       icon: 'life-buoy',
       title: 'Get Help',
       color: '#FF3B30',
       backgroundColor: 'rgba(255, 59, 48, 0.1)',
+      showToast: () => Toast.show({ text1: 'Get Help pressed' }),
     },
   ];
 
@@ -87,6 +93,7 @@ const QuickActionsCard: React.FC = () => {
           style={[styles.actionContent, { backgroundColor: action.backgroundColor }]}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
+          onPress={() => action.showToast()}
           activeOpacity={0.8}
         >
           <View style={[styles.actionIcon, { backgroundColor: action.color }]}>
