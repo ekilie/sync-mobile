@@ -2,12 +2,13 @@ import { COLORS } from '@/utils/styles';
 import { Feather } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
-    Animated,
-    StyleSheet,
-    Switch,
-    Text,
-    TouchableOpacity,
-    View
+  Animated,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+  Platform,
 } from 'react-native';
 
 interface SettingsItem {
@@ -41,72 +42,101 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({ title, items }) => {
   const SettingsItem: React.FC<{ item: SettingsItem; index: number }> = ({ item, index }) => {
     const key = `${title}-${index}`;
     const scaleAnim = React.useRef(new Animated.Value(1)).current;
+    const bgAnim = React.useRef(new Animated.Value(0)).current; // For ripple effect
 
     const handlePressIn = () => {
-      Animated.spring(scaleAnim, {
-        toValue: 0.95,
-        useNativeDriver: true,
-      }).start();
+      Animated.parallel([
+        Animated.spring(scaleAnim, {
+          toValue: 0.97,
+          useNativeDriver: true,
+        }),
+        Animated.timing(bgAnim, {
+          toValue: 1,
+          duration: 150,
+          useNativeDriver: false,
+        }),
+      ]).start();
     };
 
     const handlePressOut = () => {
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        useNativeDriver: true,
-      }).start();
+      Animated.parallel([
+        Animated.spring(scaleAnim, {
+          toValue: 1,
+          useNativeDriver: true,
+        }),
+        Animated.timing(bgAnim, {
+          toValue: 0,
+          duration: 150,
+          useNativeDriver: false,
+        }),
+      ]).start();
     };
 
+    const bgColor = bgAnim.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['white', 'rgba(0,0,0,0.04)'],
+    });
+
     return (
-      <Animated.View 
+      <Animated.View
         style={[
           styles.itemContainer,
-          { transform: [{ scale: scaleAnim }] }
+          { transform: [{ scale: scaleAnim }] },
         ]}
       >
         <TouchableOpacity
-          style={styles.item}
+          activeOpacity={0.9}
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
-          activeOpacity={0.8}
         >
-          <View style={[
-            styles.iconContainer,
-            item.destructive && styles.destructiveIconContainer
-          ]}>
-            <Feather 
-              name={item.icon} 
-              size={20} 
-              color={item.destructive ? '#FF3B30' : COLORS.active} 
-            />
-          </View>
-          
-          <View style={styles.itemContent}>
-            <Text style={[
-              styles.itemTitle,
-              item.destructive && styles.destructiveText
-            ]}>
-              {item.title}
-            </Text>
-            
-            {item.type === 'toggle' ? (
-              <Switch
-                value={toggleStates[key] || false}
-                onValueChange={(value) => handleToggle(key, value)}
-                trackColor={{ 
-                  false: 'rgba(120, 120, 128, 0.16)', 
-                  true: COLORS.active 
-                }}
-                thumbColor={toggleStates[key] ? 'white' : '#f4f3f4'}
-                ios_backgroundColor="rgba(120, 120, 128, 0.16)"
+          <Animated.View style={[styles.item, { backgroundColor: bgColor }]}>
+            <View
+              style={[
+                styles.iconContainer,
+                item.destructive && styles.destructiveIconContainer,
+              ]}
+            >
+              <Feather
+                name={item.icon}
+                size={22}
+                color={item.destructive ? '#FF3B30' : COLORS.active}
               />
-            ) : (
-              <Feather 
-                name="chevron-right" 
-                size={20} 
-                color={COLORS.inactive} 
-              />
-            )}
-          </View>
+            </View>
+
+            <View style={styles.itemContent}>
+              <Text
+                style={[
+                  styles.itemTitle,
+                  item.destructive && styles.destructiveText,
+                ]}
+              >
+                {item.title}
+              </Text>
+
+              {item.type === 'toggle' ? (
+                <Switch
+                  value={toggleStates[key] || false}
+                  onValueChange={(value) => handleToggle(key, value)}
+                  trackColor={{
+                    false: 'rgba(120, 120, 128, 0.16)',
+                    true: COLORS.active,
+                  }}
+                  thumbColor={Platform.OS === 'android'
+                    ? toggleStates[key]
+                      ? 'white'
+                      : '#f4f3f4'
+                    : undefined}
+                  ios_backgroundColor="rgba(120, 120, 128, 0.16)"
+                />
+              ) : (
+                <Feather
+                  name="chevron-right"
+                  size={20}
+                  color={COLORS.inactive}
+                />
+              )}
+            </View>
+          </Animated.View>
         </TouchableOpacity>
       </Animated.View>
     );
@@ -157,11 +187,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 14,
     paddingHorizontal: 18,
-    backgroundColor: 'white',
   },
   iconContainer: {
-    width: 40,
-    height: 40,
+    width: 42,
+    height: 42,
     borderRadius: 12,
     backgroundColor: 'rgba(26, 26, 26, 0.06)',
     justifyContent: 'center',
@@ -186,6 +215,5 @@ const styles = StyleSheet.create({
     color: '#FF3B30',
   },
 });
-
 
 export default SettingsSection;

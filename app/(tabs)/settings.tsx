@@ -9,10 +9,8 @@ import {
   View
 } from 'react-native';
 import {
-  QuickActionsCard,
   SettingsHeader,
   SettingsSection,
-  UserSettingsCard
 } from '../../components/settings';
 
 const Settings = () => {
@@ -56,7 +54,6 @@ const Settings = () => {
           <SettingsSection
             title="Preferences"
             items={[
-              { icon: 'moon', title: 'Dark Mode', type: 'toggle', value: false },
               { icon: 'bell', title: 'Push Notifications', type: 'toggle', value: true },
               { icon: 'volume-2', title: 'Sound Effects', type: 'toggle', value: true },
               { icon: 'smartphone', title: 'Haptic Feedback', type: 'toggle', value: false },
@@ -78,7 +75,6 @@ const Settings = () => {
             title="Account"
             items={[
               { icon: 'user', title: 'Edit Profile', type: 'navigation' },
-              { icon: 'credit-card', title: 'Payment Methods', type: 'navigation' },
               { icon: 'download', title: 'Data Export', type: 'navigation' },
               { icon: 'trash-2', title: 'Delete Account', type: 'navigation', destructive: true },
             ]}

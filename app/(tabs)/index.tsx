@@ -23,14 +23,15 @@ export default function HomeScreen() {
       <MapComponent onMapReady={() => setMapReady(true)} />
       
       {isMapReady && (
-        <Animated.View style={{ position: "absolute",
-          bottom: slideAnim,
+        <Animated.View style={{
+          position: "absolute",
           left: 0,
           right: 0,
+          bottom: 0,
           padding: 10,
-          transform: [{ translateY: slideAnim }] }}>
+          transform: [{ translateY: slideAnim }],
+        }}>
           <SigningSection />
-
         </Animated.View>
       )}
     </View>
