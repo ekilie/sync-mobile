@@ -1,5 +1,6 @@
 import useAuth from "@/utils/use-auth";
 import { EvilIcons, Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
     KeyboardAvoidingView,
@@ -28,7 +29,7 @@ const AuthModal = ({ visible, onClose }: AuthModalProps) => {
   const handleUserIDSubmit = async () => {
     if (!userID.trim()) return;
     setIsLoading(true);
-    // Simulate API call
+    // TODO:Simulate API call
     setTimeout(() => {
       setIsLoading(false);
       setCurrentStep("otp");
@@ -48,6 +49,7 @@ const AuthModal = ({ visible, onClose }: AuthModalProps) => {
 
       setIsLoading(false);
       onClose();
+      // No manual navigation; layout will handle redirect based on auth state
     }, 1000);
   };
 

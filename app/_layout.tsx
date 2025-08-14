@@ -7,7 +7,6 @@ export default function RootLayout() {
   return (
     <>
       <Stack>
-        <Stack.Screen name="(splash)/index" options={{ headerShown: false }} />
         <Stack.Protected guard={!isAuthenticated}>
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         </Stack.Protected>
