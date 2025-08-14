@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
-import Toast from 'react-native-toast-message';
+import { showToast } from '../../lib/toast';
 
 interface QuickAction {
   icon: React.ComponentProps<typeof Feather>['name'];
@@ -94,15 +94,7 @@ const QuickActionsCard: React.FC = () => {
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
           onPress={() => {
-            Toast.show({
-              type: 'info',
-              text1: action.toastMsg,
-              position: 'bottom',
-              visibilityTime: 2200,
-              autoHide: true,
-              topOffset: 30,
-              bottomOffset: 60,
-            });
+            showToast(action.toastMsg, 'info');
           }}
           activeOpacity={0.8}
         >

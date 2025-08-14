@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Animated, Easing } from "react-native";
-import SigningSection from "@/components/index/signing-section";
 import MapComponent from "@/components/index/map-component";
-import { Toast } from "react-native-toast-message/lib/src/Toast";
+import SigningSection from "@/components/index/signing-section";
+import React, { useEffect, useRef, useState } from "react";
+import { Animated, Easing, StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
   const [isMapReady, setMapReady] = useState(false);
@@ -21,7 +20,6 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Toast />
       <MapComponent onMapReady={() => setMapReady(true)} />
 
       {isMapReady && (

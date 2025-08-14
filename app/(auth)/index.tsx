@@ -1,19 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  Platform, 
-  StatusBar, 
-  Animated,
-  SafeAreaView,
-  Easing
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import Button from "@/components/auth/button";
 import AuthModal from "@/components/auth/modal";
 import { COLORS } from "@/utils/styles";
-import Toast from 'react-native-toast-message';
+import { Ionicons } from "@expo/vector-icons";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Animated,
+  Easing,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
 
 
 export default function AuthScreen() {
@@ -32,7 +31,6 @@ export default function AuthScreen() {
       Animated.timing(translateYAnim, {
         toValue: 0,
         duration: 700,
-        useNativeDriver: true,
         easing: Easing.out(Easing.exp)
       })
     ]).start();
