@@ -43,7 +43,6 @@ export default function AuthScreen() {
 
   return (
     <View style={styles.container}>
-      <Toast/>
       <StatusBar 
         barStyle="dark-content" 
         backgroundColor={COLORS.background} 
