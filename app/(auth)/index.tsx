@@ -31,6 +31,7 @@ export default function AuthScreen() {
       Animated.timing(translateYAnim, {
         toValue: 0,
         duration: 700,
+        useNativeDriver: true,
         easing: Easing.out(Easing.exp)
       })
     ]).start();
