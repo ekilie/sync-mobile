@@ -1,3 +1,4 @@
+import { COLORS } from "@/utils/styles";
 import useAuth from "@/utils/use-auth";
 import { EvilIcons, Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
@@ -7,6 +8,7 @@ import {
   Platform,
   SafeAreaView,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -70,7 +72,15 @@ const AuthModal = ({ visible, onClose }: AuthModalProps) => {
       animationType="slide"
       presentationStyle="formSheet"
       onRequestClose={resetAndClose}
+      style={{
+        margin: 0,
+        height: "100%",
+        justifyContent: "flex-end",
+      }}
+      
     >
+      <StatusBar barStyle="dark-content" backgroundColor={COLORS.background} />
+
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
