@@ -63,13 +63,14 @@ export default function AuthScreen() {
             color={COLORS.icon} 
             style={styles.icon} 
           />
+          
+        </Animated.View>
+
+        <View style={styles.buttonContainer}>
           <Text style={styles.title}>Login to Sync</Text>
           <Text style={styles.subtitle}>
             Sign your attendance with ease using Sync App
           </Text>
-        </Animated.View>
-
-        <View style={styles.buttonContainer}>
           <Button 
             title="Login" 
             onPress={handleOpenModal} 
@@ -92,12 +93,15 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 24,
+    justifyContent: "space-between",
+    padding: 24,
   },
   header: {
-    alignItems: "center",
+    display: "flex",
+    alignContent: "flex-start",
+    alignItems: "flex-start",
     marginBottom: 48,
+    marginTop: 24,
   },
   icon: {
     marginBottom: 16,
