@@ -63,7 +63,7 @@ export default function AuthScreen() {
         <View style={styles.bottomContainer}>
           <View style={styles.bottomTitleContainer}>
             <Text style={styles.title}>
-              Let’s{"\n"}Get You{"\n"}Connected
+              Effortless{"\n"}Attendance{"\n"}Anywhere
             </Text>
             <AuthModal
               visible={isModalVisible}
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: Platform.select({ ios: 36, android: 34 }),
-    fontWeight: "800",
+    fontWeight: "400",
     color: COLORS.primaryText,
     lineHeight: 40,
   },
