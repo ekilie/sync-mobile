@@ -1,4 +1,3 @@
-import Button from "@/components/auth/button";
 import AuthModal from "@/components/auth/modal";
 import { COLORS } from "@/utils/styles";
 import { Ionicons } from "@expo/vector-icons";
@@ -11,7 +10,6 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  Touchable,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -38,9 +36,6 @@ export default function AuthScreen() {
     ]).start();
   }, []);
 
-  const handleOpenModal = () => setIsModalVisible(true);
-  const handleCloseModal = () => setIsModalVisible(false);
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.background} />
@@ -66,9 +61,16 @@ export default function AuthScreen() {
         <View style={styles.buttonContainer}>
           <View style={styles.bottomTitleContainer}>
             <Text style={styles.title}>Login to Sync</Text>
-            <AuthModal visible={isModalVisible} onClose={handleCloseModal} />
+            <AuthModal
+              visible={isModalVisible}
+              onClose={() => setIsModalVisible(false)}
+            />
           </View>
-          <TouchableOpacity onPress={handleOpenModal} style={styles.button}>
+
+          <TouchableOpacity
+            onPress={() => setIsModalVisible(true)}
+            style={styles.button}
+          >
             <Text style={styles.buttonText}>{">>"}</Text>
           </TouchableOpacity>
         </View>
@@ -76,6 +78,8 @@ export default function AuthScreen() {
     </View>
   );
 }
+
+const BUTTON_SIZE = 64;
 
 const styles = StyleSheet.create({
   container: {
@@ -88,8 +92,6 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   header: {
-    display: "flex",
-    alignContent: "flex-start",
     alignItems: "flex-start",
     marginBottom: 48,
     marginTop: 24,
@@ -109,29 +111,22 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     textAlign: "center",
   },
-  subtitle: {
-    fontSize: 16,
-    color: COLORS.secondaryText,
-    textAlign: "center",
-    lineHeight: 24,
-    maxWidth: "85%",
-  },
   buttonContainer: {
-    display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 16,
   },
-
   bottomTitleContainer: {
-    flex: 2,
     alignItems: "center",
     marginBottom: 16,
   },
   button: {
+    width: BUTTON_SIZE,
+    height: BUTTON_SIZE,
+    borderRadius: BUTTON_SIZE / 2,
     backgroundColor: "black",
-    padding: 20,
-    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -139,7 +134,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "600",
     color: "white",
   },
