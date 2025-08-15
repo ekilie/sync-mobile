@@ -1,6 +1,7 @@
+import MeshBackground from "@/components/auth/meshBackground";
 import AuthModal from "@/components/auth/modal";
 import { COLORS } from "@/utils/styles";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef, useState } from "react";
 import {
   Animated,
@@ -38,6 +39,7 @@ export default function AuthScreen() {
 
   return (
     <View style={styles.container}>
+      <MeshBackground />
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.background} />
 
       <SafeAreaView style={styles.content}>
@@ -76,7 +78,7 @@ export default function AuthScreen() {
             style={styles.button}
             activeOpacity={0.8}
           >
-            <Ionicons name="arrow-forward" size={28} color="white" />
+            <AntDesign name="doubleright" size={28} color={COLORS.accent} />
           </TouchableOpacity>
         </View>
       </SafeAreaView>

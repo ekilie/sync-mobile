@@ -4,7 +4,7 @@ export const COLORS = {
   secondaryText: "#6B7280",    // Secondary text (subtitles, muted info)
   icon: "#000000",             // Default icon color
   active: "#1A1A1A",           // Active tab/item color
-  accent: "#3B82F6",           // Primary accent (buttons, highlights, links)
+  accent: "#FFFFFFFF",           // Primary accent (buttons, highlights, links)
   accentLight: "#E0F2FE",      // Light accent backgrounds (chips, tags, subtle backgrounds)
   accentDark: "#1E40AF",       // Dark accent (active states, accent borders)
   success: "#22C55E",          // Success state (toasts, icons, buttons)
