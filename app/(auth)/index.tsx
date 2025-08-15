@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     width: BUTTON_SIZE,
     height: BUTTON_SIZE,
     borderRadius: BUTTON_SIZE / 2,
-    backgroundColor: COLORS.primary || "black",
+    backgroundColor: COLORS.black || "black",
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",
