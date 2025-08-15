@@ -11,9 +11,10 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  View
+  Touchable,
+  TouchableOpacity,
+  View,
 } from "react-native";
-
 
 export default function AuthScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -26,14 +27,14 @@ export default function AuthScreen() {
         toValue: 1,
         duration: 800,
         useNativeDriver: true,
-        easing: Easing.out(Easing.cubic)
+        easing: Easing.out(Easing.cubic),
       }),
       Animated.timing(translateYAnim, {
         toValue: 0,
         duration: 700,
         useNativeDriver: true,
-        easing: Easing.out(Easing.exp)
-      })
+        easing: Easing.out(Easing.exp),
+      }),
     ]).start();
   }, []);
 
@@ -42,44 +43,34 @@ export default function AuthScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar 
-        barStyle="dark-content" 
-        backgroundColor={COLORS.background} 
-      />
-      
+      <StatusBar barStyle="dark-content" backgroundColor={COLORS.background} />
+
       <SafeAreaView style={styles.content}>
-        <Animated.View 
+        <Animated.View
           style={[
-            styles.header, 
-            { 
+            styles.header,
+            {
               opacity: fadeAnim,
-              transform: [{ translateY: translateYAnim }] 
-            }
+              transform: [{ translateY: translateYAnim }],
+            },
           ]}
         >
-          <Ionicons 
-            name="sync" 
-            size={48} 
-            color={COLORS.icon} 
-            style={styles.icon} 
+          <Ionicons
+            name="sync"
+            size={48}
+            color={COLORS.icon}
+            style={styles.icon}
           />
-          
         </Animated.View>
 
         <View style={styles.buttonContainer}>
-          <Text style={styles.title}>Login to Sync</Text>
-          <Text style={styles.subtitle}>
-            Sign your attendance with ease using Sync App
-          </Text>
-          <Button 
-            title="Login" 
-            onPress={handleOpenModal} 
-            // style={styles.button}
-          />
-          <AuthModal 
-            visible={isModalVisible} 
-            onClose={handleCloseModal} 
-          />
+          <View style={styles.bottomTitleContainer}>
+            <Text style={styles.title}>Login to Sync</Text>
+            <AuthModal visible={isModalVisible} onClose={handleCloseModal} />
+          </View>
+          <TouchableOpacity onPress={handleOpenModal} style={styles.button}>
+            <Text style={styles.buttonText}>{">>"}</Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </View>
@@ -126,13 +117,30 @@ const styles = StyleSheet.create({
     maxWidth: "85%",
   },
   buttonContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 16,
   },
+
+  bottomTitleContainer: {
+    flex: 2,
+    alignItems: "center",
+    marginBottom: 16,
+  },
   button: {
+    backgroundColor: "black",
+    padding: 20,
+    borderRadius: 50,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 5,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "white",
   },
 });
