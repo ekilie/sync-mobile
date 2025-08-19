@@ -157,23 +157,20 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
   },
   content: {
     flex: 1,
-    justifyContent: "center", // centers vertically
-    alignItems: "center",     // centers horizontally
-    padding: 20,
+    position: "relative",
+    top: "20%",
+    alignItems: "center",
   },
   keyboardWrapper: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    flex: 0, // don’t let it expand full height
+    flex: 0,
   },
   card: {
-    width: "100%",       // keep some margin
-    maxWidth: 400,      // look good on tablets
     backgroundColor: COLORS.white,
     borderRadius: 28,
     padding: 28,
