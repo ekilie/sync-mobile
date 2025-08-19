@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { router } from "expo-router";
 
 
 // App flow: onboarding -> sign in -> tabs
@@ -45,14 +46,6 @@ export default function AuthScreen() {
 
   if (screen === 'signin') {
     return <SignInScreen onSuccess={() => setScreen('tabs')} />;
-  }
-  if (screen === 'tabs') {
-    // TODO: Replace with actual tab navigation
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background }}>
-        <Text style={{ fontSize: 24, color: COLORS.primaryText }}>Tabs Placeholder</Text>
-      </View>
-    );
   }
 
   // Onboarding screen
@@ -93,7 +86,7 @@ export default function AuthScreen() {
           </View>
 
           <TouchableOpacity
-            onPress={() => setScreen('signin')}
+            onPress={() => router.push("/(auth)/signin")}
             style={styles.button}
             activeOpacity={0.8}
           >
