@@ -14,7 +14,6 @@ import {
 } from "react-native";
 import { COLORS } from "@/utils/styles";
 import { AntDesign } from "@expo/vector-icons";
-// import AuthModal from "@/components/auth/modal";
 import MeshBackground from "@/components/auth/meshBackground";
 
 export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
@@ -22,7 +21,6 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState("");
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const translateYAnim = useRef(new Animated.Value(20)).current;
 
@@ -66,7 +64,7 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
       <SafeAreaView style={styles.content}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : undefined}
-          style={{ flex: 1 }}
+          style={{ flex: 1, width: "100%" }}
         >
           <Animated.View
             style={[
@@ -79,10 +77,13 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
           >
             {step === "email" ? (
               <>
-                <Text style={styles.title}>Sign in to continue</Text>
+                <Text style={styles.title}>Sign in</Text>
+                <Text style={styles.subtitle}>
+                  Enter your email to get started
+                </Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="Enter your email"
+                  placeholder="you@example.com"
                   placeholderTextColor={COLORS.secondaryText}
                   value={email}
                   onChangeText={setEmail}
@@ -91,24 +92,28 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
                   autoCorrect={false}
                   editable={!loading}
                 />
-                {/* error display removed */}
                 <TouchableOpacity
-                  style={styles.button}
+                  style={[styles.button, !(email && !loading) && styles.buttonDisabled]}
                   onPress={handleEmailSubmit}
                   disabled={loading || !email}
-                  activeOpacity={0.8}
+                  activeOpacity={0.85}
                 >
-                  <Text style={styles.buttonText}>{loading ? "Sending..." : "Continue"}</Text>
-                  <AntDesign name="arrowright" size={24} color={COLORS.accent} />
+                  <Text style={styles.buttonText}>
+                    {loading ? "Sending..." : "Continue"}
+                  </Text>
+                  <AntDesign name="arrowright" size={22} color={COLORS.accent} />
                 </TouchableOpacity>
               </>
             ) : (
               <>
                 <Text style={styles.title}>Enter OTP</Text>
-                <Text style={styles.subtitle}>We sent a code to {email}</Text>
+                <Text style={styles.subtitle}>
+                  We sent a 6-digit code to{"\n"}
+                  <Text style={styles.highlight}>{email}</Text>
+                </Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="Enter OTP"
+                  placeholder="••••••"
                   placeholderTextColor={COLORS.secondaryText}
                   value={otp}
                   onChangeText={setOtp}
@@ -116,15 +121,16 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
                   maxLength={6}
                   editable={!loading}
                 />
-                {/* error display removed */}
                 <TouchableOpacity
-                  style={styles.button}
+                  style={[styles.button, otp.length < 6 && styles.buttonDisabled]}
                   onPress={handleOtpSubmit}
                   disabled={loading || otp.length < 6}
-                  activeOpacity={0.8}
+                  activeOpacity={0.85}
                 >
-                  <Text style={styles.buttonText}>{loading ? "Verifying..." : "Verify"}</Text>
-                  <AntDesign name="check" size={24} color={COLORS.accent} />
+                  <Text style={styles.buttonText}>
+                    {loading ? "Verifying..." : "Verify"}
+                  </Text>
+                  <AntDesign name="check" size={22} color={COLORS.accent} />
                 </TouchableOpacity>
               </>
             )}
@@ -139,70 +145,86 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
   },
   content: {
     flex: 1,
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    padding: 24,
+    padding: 20,
   },
   card: {
     width: "100%",
     backgroundColor: COLORS.white,
-    borderRadius: 24,
+    borderRadius: 28,
     padding: 28,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 10,
     alignItems: "center",
   },
   title: {
-    fontSize: 28,
-    fontWeight: "600",
+    fontSize: 30,
+    fontWeight: "700",
     color: COLORS.primaryText,
-    marginBottom: 16,
+    marginBottom: 8,
     textAlign: "center",
+    letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 16,
     color: COLORS.secondaryText,
-    marginBottom: 16,
+    marginBottom: 20,
     textAlign: "center",
+    lineHeight: 22,
+  },
+  highlight: {
+    fontWeight: "600",
+    color: COLORS.primaryText,
   },
   input: {
     width: "100%",
-    height: 48,
-    borderRadius: 12,
+    height: 52,
+    borderRadius: 14,
     borderWidth: 1,
     borderColor: COLORS.border,
-  backgroundColor: '#F5F5F5',
+    backgroundColor: "#F9FAFB",
     paddingHorizontal: 16,
     fontSize: 16,
     color: COLORS.primaryText,
-    marginBottom: 16,
+    marginBottom: 18,
   },
   button: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: COLORS.black,
-    borderRadius: 12,
-    paddingVertical: 12,
+    borderRadius: 14,
+    paddingVertical: 14,
     paddingHorizontal: 24,
-    marginTop: 8,
+    marginTop: 6,
     alignSelf: "stretch",
+  },
+  buttonDisabled: {
+    opacity: 0.6,
   },
   buttonText: {
     color: COLORS.accent,
-    fontSize: 18,
-    fontWeight: "500",
+    fontSize: 17,
+    fontWeight: "600",
     marginRight: 8,
+    letterSpacing: 0.2,
   },
   error: {
     color: COLORS.error,
     marginBottom: 8,
     textAlign: "center",
+    fontSize: 14,
   },
 });

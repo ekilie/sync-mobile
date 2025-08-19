@@ -20,13 +20,11 @@ import { router } from "expo-router";
 
 // App flow: onboarding -> sign in -> tabs
 export default function AuthScreen() {
-  const [screen, setScreen] = useState<'onboarding' | 'signin' | 'tabs'>('onboarding');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const translateYAnim = useRef(new Animated.Value(20)).current;
 
   useEffect(() => {
-    if (screen === 'onboarding') {
       Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
@@ -41,12 +39,8 @@ export default function AuthScreen() {
           easing: Easing.out(Easing.exp),
         }),
       ]).start();
-    }
-  }, [screen, fadeAnim, translateYAnim]);
+  }, [fadeAnim, translateYAnim]);
 
-  if (screen === 'signin') {
-    return <SignInScreen onSuccess={() => setScreen('tabs')} />;
-  }
 
   // Onboarding screen
   return (
