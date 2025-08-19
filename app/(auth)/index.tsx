@@ -1,5 +1,6 @@
 import MeshBackground from "@/components/auth/meshBackground";
 import AuthModal from "@/components/auth/modal";
+import SignInScreen from "./signin";
 import { COLORS } from "@/utils/styles";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef, useState } from "react";
@@ -15,28 +16,46 @@ import {
   View,
 } from "react-native";
 
+
+// App flow: onboarding -> sign in -> tabs
 export default function AuthScreen() {
+  const [screen, setScreen] = useState<'onboarding' | 'signin' | 'tabs'>('onboarding');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const translateYAnim = useRef(new Animated.Value(20)).current;
 
   useEffect(() => {
-    Animated.parallel([
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 800,
-        useNativeDriver: true,
-        easing: Easing.out(Easing.cubic),
-      }),
-      Animated.timing(translateYAnim, {
-        toValue: 0,
-        duration: 700,
-        useNativeDriver: true,
-        easing: Easing.out(Easing.exp),
-      }),
-    ]).start();
-  }, []);
+    if (screen === 'onboarding') {
+      Animated.parallel([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true,
+          easing: Easing.out(Easing.cubic),
+        }),
+        Animated.timing(translateYAnim, {
+          toValue: 0,
+          duration: 700,
+          useNativeDriver: true,
+          easing: Easing.out(Easing.exp),
+        }),
+      ]).start();
+    }
+  }, [screen, fadeAnim, translateYAnim]);
 
+  if (screen === 'signin') {
+    return <SignInScreen onSuccess={() => setScreen('tabs')} />;
+  }
+  if (screen === 'tabs') {
+    // TODO: Replace with actual tab navigation
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background }}>
+        <Text style={{ fontSize: 24, color: COLORS.primaryText }}>Tabs Placeholder</Text>
+      </View>
+    );
+  }
+
+  // Onboarding screen
   return (
     <View style={styles.container}>
       <MeshBackground />
@@ -74,7 +93,7 @@ export default function AuthScreen() {
           </View>
 
           <TouchableOpacity
-            onPress={() => setIsModalVisible(true)}
+            onPress={() => setScreen('signin')}
             style={styles.button}
             activeOpacity={0.8}
           >
