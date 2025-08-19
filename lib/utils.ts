@@ -29,7 +29,7 @@ export function isJwtExpired(token: string): boolean {
 export function HapticFeedback(type: HapticFeedbackType = "light") {
    switch (type) {
      case "light":
-       Vibration.vibrate(20);
+       Vibration.vibrate(5);
        break;
      case "medium":
        Vibration.vibrate(30);
