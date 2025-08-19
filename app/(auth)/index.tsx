@@ -16,6 +16,9 @@ import {
   View,
 } from "react-native";
 import { router } from "expo-router";
+import * as Haptics from 'expo-haptics';
+import { HapticFeedback } from "@/lib/utils";
+
 
 
 // App flow: onboarding -> sign in -> tabs
@@ -80,7 +83,10 @@ export default function AuthScreen() {
           </View>
 
           <TouchableOpacity
-            onPress={() => router.push("/(auth)/signin")}
+            onPress={() => {
+              HapticFeedback();
+              router.push("/(auth)/signin");
+            }}
             style={styles.button}
             activeOpacity={0.8}
           >
