@@ -64,7 +64,7 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
       <SafeAreaView style={styles.content}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : undefined}
-          style={{ flex: 1, width: "100%" }}
+          style={styles.keyboardWrapper}
         >
           <Animated.View
             style={[
@@ -93,7 +93,10 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
                   editable={!loading}
                 />
                 <TouchableOpacity
-                  style={[styles.button, !(email && !loading) && styles.buttonDisabled]}
+                  style={[
+                    styles.button,
+                    !(email && !loading) && styles.buttonDisabled,
+                  ]}
                   onPress={handleEmailSubmit}
                   disabled={loading || !email}
                   activeOpacity={0.85}
@@ -101,7 +104,11 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
                   <Text style={styles.buttonText}>
                     {loading ? "Sending..." : "Continue"}
                   </Text>
-                  <AntDesign name="arrowright" size={22} color={COLORS.accent} />
+                  <AntDesign
+                    name="arrowright"
+                    size={22}
+                    color={COLORS.accent}
+                  />
                 </TouchableOpacity>
               </>
             ) : (
@@ -122,7 +129,10 @@ export default function SignInScreen({ onSuccess }: { onSuccess: () => void }) {
                   editable={!loading}
                 />
                 <TouchableOpacity
-                  style={[styles.button, otp.length < 6 && styles.buttonDisabled]}
+                  style={[
+                    styles.button,
+                    otp.length < 6 && styles.buttonDisabled,
+                  ]}
                   onPress={handleOtpSubmit}
                   disabled={loading || otp.length < 6}
                   activeOpacity={0.85}
@@ -151,14 +161,19 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "center", // centers vertically
+    alignItems: "center",     // centers horizontally
     padding: 20,
   },
-  card: {
+  keyboardWrapper: {
     width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 0, // don’t let it expand full height
+  },
+  card: {
+    width: "100%",       // keep some margin
+    maxWidth: 400,      // look good on tablets
     backgroundColor: COLORS.white,
     borderRadius: 28,
     padding: 28,
